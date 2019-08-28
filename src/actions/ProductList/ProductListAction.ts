@@ -1,7 +1,6 @@
-import * as ActionCreators from "./ProductListActionCreator"
-import { ActionType } from "typesafe-actions";
+import * as ProductListActionCreators from './ProductListActionCreator';
+import { ActionType } from 'typesafe-actions';
 
-type ProductListAction = ActionType<typeof ActionCreators>;
+type ProductListAction = ActionType<typeof ProductListActionCreators>;
 
 export default ProductListAction;
-

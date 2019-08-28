@@ -1,9 +1,9 @@
-import productListActionType from "./ProductListActionType";
-import IProduct from "src/apis/ProductList";
-import { createAsyncAction } from 'typesafe-actions'
+import ProductListActionType from './ProductListActionType';
+import ProductList from 'src/apis/ProductList/ProductList';
+import { createAsyncAction } from 'typesafe-actions';
 
 export const getProductList = createAsyncAction(
-    productListActionType.PRODUCTLIST_REQUEST,
-    productListActionType.PRODUCTLIST_SUCCESS,
-    productListActionType.PRODUCTLIST_FAILED
-)<undefined, IProduct[], Error>();
+  ProductListActionType.PRODUCTLIST_REQUEST,
+  ProductListActionType.PRODUCTLIST_SUCCESS,
+  ProductListActionType.PRODUCTLIST_FAILED
+)<undefined, ProductList[], Error>();

@@ -18,9 +18,12 @@ class ProductList extends React.Component<ProductListProps> {
     this.props.getProductListRequest();
   }
 
-  public handleClick = (url: string) => (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  public handleClick = (url: string, id: number) => (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     this.props.history.push(url);
-  }
+    this.props.getProductDetailsRequest(id);
+  };
 
   render() {
     const { classes, productList } = this.props;
@@ -41,7 +44,7 @@ class ProductList extends React.Component<ProductListProps> {
           <GridList cellHeight={420} className={classes.gridList}>
             {productList.map((product, index) => (
               <Card className={classes.card} key={index}>
-                <CardActionArea onClick={this.handleClick('/details')}>
+                <CardActionArea onClick={this.handleClick('/details', product.id)}>
                   <CardMedia
                     className={classes.media}
                     image={product.icon_path}
