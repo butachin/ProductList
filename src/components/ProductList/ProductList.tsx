@@ -11,10 +11,15 @@ import {
   CardContent,
   TextField,
 } from '@material-ui/core';
+import { withRouter } from 'react-router';
 
 class ProductList extends React.Component<ProductListProps> {
   public componentDidMount() {
     this.props.getProductListRequest();
+  }
+
+  public handleClick = (url: string) => (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    this.props.history.push(url);
   }
 
   render() {
@@ -36,7 +41,7 @@ class ProductList extends React.Component<ProductListProps> {
           <GridList cellHeight={420} className={classes.gridList}>
             {productList.map((product, index) => (
               <Card className={classes.card} key={index}>
-                <CardActionArea>
+                <CardActionArea onClick={this.handleClick('/details')}>
                   <CardMedia
                     className={classes.media}
                     image={product.icon_path}
@@ -60,4 +65,4 @@ class ProductList extends React.Component<ProductListProps> {
   }
 }
 
-export default withStyles(styles)(ProductList);
+export default withRouter(withStyles(styles)(ProductList));
