@@ -15,7 +15,7 @@ import {
 
 class ProductList extends React.Component<Props> {
   render() {
-    const { classes } = this.props;
+    const { classes, handleClick } = this.props;
 
     const productData = [
       {
@@ -79,21 +79,21 @@ class ProductList extends React.Component<Props> {
         />
         <div className={classes.root}>
           <GridList cellHeight={420} className={classes.gridList}>
-            {productData.map(p => (
+            {productData.map(product => (
               <Card className={classes.card}>
-                <CardActionArea>
+                <CardActionArea onClick={handleClick(product.id)}>
                   <CardMedia
                     className={classes.media}
-                    image={p.icon_path}
+                    image={product.icon_path}
                     title='Contemplative Reptile'
                   />
                 </CardActionArea>
                 <CardContent>
-                  <Typography variant='h5'>{p.name}</Typography>
-                  <Typography variant='body2'>{`評価：${p.review_point}`}</Typography>
-                  <Typography variant='body2'>{`コメント：${p.review_content}`}</Typography>
+                  <Typography variant='h5'>{product.name}</Typography>
+                  <Typography variant='body2'>{`評価：${product.review_point}`}</Typography>
+                  <Typography variant='body2'>{`コメント：${product.review_content}`}</Typography>
                   <Typography variant='body2' color='textSecondary'>
-                    {p.made_by}
+                    {product.made_by}
                   </Typography>
                 </CardContent>
               </Card>
