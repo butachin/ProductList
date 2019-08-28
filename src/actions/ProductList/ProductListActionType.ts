@@ -1,0 +1,7 @@
+enum productListActionType {
+    PRODUCTLIST_REQUEST = 'PRODUCTLIST_REQUEST',
+    PRODUCTLIST_SUCCESS = 'PRODUCTLIST_SUCCESS',
+    PRODUCTLIST_FAILED = 'PRODUCTLIST_FAILED'
+}
+
+export default productListActionType;

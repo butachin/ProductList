@@ -1,7 +1,6 @@
 import React from 'react';
-import Props from './ProductListProps';
+import ProductListProps from './ProductListProps';
 import GridList from '@material-ui/core/GridList';
-import image from '../../images/apple_watch.png';
 import { withStyles } from '@material-ui/styles';
 import styles from './ProductListStyles';
 import {
@@ -13,57 +12,14 @@ import {
   TextField,
 } from '@material-ui/core';
 
-class ProductList extends React.Component<Props> {
-  render() {
-    const { classes, handleClick } = this.props;
 
-    const productData = [
-      {
-        id: 0,
-        name: 'Apple Watch',
-        value: 0,
-        icon_path: image,
-        review_point: 3,
-        review_content: '最高',
-        made_by: 'Apple, Inc',
-      },
-      {
-        id: 1,
-        name: 'Apple Watch',
-        value: 0,
-        icon_path: image,
-        review_point: 3,
-        review_content: '最高',
-        made_by: 'Apple, Inc',
-      },
-      {
-        id: 2,
-        name: 'Apple Watch',
-        value: 0,
-        icon_path: image,
-        review_point: 3,
-        review_content: '最高',
-        made_by: 'Apple, Inc',
-      },
-      {
-        id: 3,
-        name: 'Apple Watch',
-        value: 0,
-        icon_path: image,
-        review_point: 3,
-        review_content: '最高',
-        made_by: 'Apple, Inc',
-      },
-      {
-        id: 3,
-        name: 'Apple Watch',
-        value: 0,
-        icon_path: image,
-        review_point: 3,
-        review_content: '最高',
-        made_by: 'Apple, Inc',
-      },
-    ];
+class ProductList extends React.Component<ProductListProps> {
+  public componentDidMount() {
+    this.props.getProductListRequest()
+  }
+
+  render() {
+    const { classes, handleClick, productList } = this.props;
 
     return (
       <div>
@@ -79,7 +35,7 @@ class ProductList extends React.Component<Props> {
         />
         <div className={classes.root}>
           <GridList cellHeight={420} className={classes.gridList}>
-            {productData.map(product => (
+            {productList.map(product => (
               <Card className={classes.card}>
                 <CardActionArea onClick={handleClick(product.id)}>
                   <CardMedia

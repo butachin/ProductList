@@ -1,10 +1,19 @@
 import { WithStyles } from '@material-ui/core';
 import styles from './ProductListStyles';
+import IProduct from 'src/apis/ProductList';
 
 type ProductListOwnProps = {
   handleClick: (id: number) => (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 };
 
-type ProductListProps = WithStyles<typeof styles> & ProductListOwnProps;
+export type ProductListConnectProps = {
+  productList: IProduct[]
+}
+
+export type ProductListDispatchProps = {
+  getProductListRequest: () => void;
+}
+
+type ProductListProps = WithStyles<typeof styles> & ProductListOwnProps & ProductListConnectProps & ProductListDispatchProps;
 
 export default ProductListProps;
