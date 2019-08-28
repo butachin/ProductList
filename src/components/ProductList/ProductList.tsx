@@ -12,14 +12,13 @@ import {
   TextField,
 } from '@material-ui/core';
 
-
 class ProductList extends React.Component<ProductListProps> {
   public componentDidMount() {
-    this.props.getProductListRequest()
+    this.props.getProductListRequest();
   }
 
   render() {
-    const { classes, handleClick, productList } = this.props;
+    const { classes, productList } = this.props;
 
     return (
       <div>
@@ -37,7 +36,7 @@ class ProductList extends React.Component<ProductListProps> {
           <GridList cellHeight={420} className={classes.gridList}>
             {productList.map(product => (
               <Card className={classes.card}>
-                <CardActionArea onClick={handleClick(product.id)}>
+                <CardActionArea>
                   <CardMedia
                     className={classes.media}
                     image={product.icon_path}
