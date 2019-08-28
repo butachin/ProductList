@@ -2,7 +2,7 @@
 
 // }
 
-import image from 'src/images/apple_watch.png';
+import image from '../images/apple_watch.png';
 export function getProductList() {
   return [
     {

@@ -1,13 +1,13 @@
 import {
   ProductListConnectProps,
   ProductListDispatchProps,
-} from 'src/components/ProductList/ProductListProps';
+} from '../../components/ProductList/ProductListProps';
 import rootState from 'src/states';
 import { connect } from 'react-redux';
-import ProductList from 'src/components/ProductList/ProductList';
+import ProductList from '../../components/ProductList/ProductList';
 import { Dispatch } from 'redux';
-import ProductListAction from 'src/actions/ProductList/ProductListAction';
-import * as ProductListActionCreators from 'src/actions/ProductList/ProductListActionCreator';
+import ProductListAction from '../../actions/ProductList/ProductListAction';
+import * as ProductListActionCreators from '../../actions/ProductList/ProductListActionCreator';
 
 function mapStateToProps(state: rootState): ProductListConnectProps {
   return {

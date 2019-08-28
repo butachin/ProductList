@@ -1,6 +1,6 @@
 import IProduct from "src/apis/ProductList";
 import ProductListAction from "src/actions/ProductList/ProductListAction";
-import productListActionType from "src/actions/ProductList/ProductListActionType";
+import productListActionType from "../../actions/ProductList/ProductListActionType";
 
 const initialState: IProduct[] = [];
 

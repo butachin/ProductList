@@ -34,8 +34,8 @@ class ProductList extends React.Component<ProductListProps> {
         />
         <div className={classes.root}>
           <GridList cellHeight={420} className={classes.gridList}>
-            {productList.map(product => (
-              <Card className={classes.card}>
+            {productList.map((product, index) => (
+              <Card className={classes.card} key={index}>
                 <CardActionArea>
                   <CardMedia
                     className={classes.media}
