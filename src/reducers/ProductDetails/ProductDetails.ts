@@ -21,16 +21,10 @@ export default function productList(
       return {
         ...state,
       };
-    case ProductDetailsActionType.PRODUCTDETAILS_SUCCESS:
+    case ProductDetailsActionType.PRODUCTDETAILS_SUCCESSED:
       return {
+        ...state,
         ...action.payload,
-        id: state.id,
-        name: state.name,
-        value: state.value,
-        icon_path: state.icon_path,
-        review_point: state.review_point,
-        review_content: state.review_content,
-        made_by: state.made_by,
       };
     default:
       return state;
