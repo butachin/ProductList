@@ -1,22 +1,23 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { getProductList } from '../../apis/ProductApi';
-import * as productListActionCreators from '../../actions/ProductList/ProductListActionCreator';
+import api from '../../apis/ProductApi';
+import { getProductList } from '../../actions/ProductList/ProductListActionCreator';
 import productListActionType from '../../actions/ProductList/ProductListActionType';
+import { PromiseGenericType } from 'src/utils/types/TypeUtils';
 
-function* getProductListData() {
-  // const { body, error } = yield call(getProductList);
-  // if(error) {
-  //     yield put(productListActionCreators.getProductList.failure(error));
-  // } else {
-  //     if(body) {
-  //         console.log(`body:${body}`)
-  //         yield put(productListActionCreators.getProductList.success(body))
-  //     }
-  // }
-  const productList = yield call(getProductList);
-  yield put(productListActionCreators.getProductList.success(productList));
+export function* getProductListData(action: ReturnType<typeof getProductList.request>) {
+  const response: PromiseGenericType<ReturnType<typeof api.getProductList>> = yield call(
+    api.getProductList,
+    action.payload
+  );
+
+  if (response.status === 200 && response.data) {
+    yield put(getProductList.success(response.data));
+  } else if (response.status === 400) {
+    yield put(getProductList.failure());
+  } else {
+    yield put(getProductList.failure());
+  }
 }
 
 const ProductListSaga = [takeEvery(productListActionType.PRODUCTLIST_REQUEST, getProductListData)];
-
 export default ProductListSaga;

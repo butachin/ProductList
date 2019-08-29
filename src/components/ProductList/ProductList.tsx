@@ -15,7 +15,7 @@ import { withRouter } from 'react-router';
 
 class ProductList extends React.Component<ProductListProps> {
   public componentDidMount() {
-    this.props.getProductListRequest();
+    this.props.getProductListRequest(1);
   }
 
   public handleClick = (url: string, id: number) => (

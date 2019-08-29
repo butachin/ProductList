@@ -12,7 +12,7 @@ export type ProductListConnectedProps = {
 };
 
 export type ProductListDispatchProps = {
-  getProductListRequest: () => void;
+  getProductListRequest: (page_num: number) => void;
   getProductDetailsRequest: (id: number) => void;
 };
 

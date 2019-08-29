@@ -1,67 +1,23 @@
-// export function getProductList() {
+import axios from 'axios';
+import ProductList from './ProductList/ProductList';
+import ProductDetails from './ProductDetails/ProductDetails';
 
-// }
+class ProductApi {
+  public async getProductList(page_num: number) {
+    try {
+      return await axios.get<ProductList[]>('http://localhost:3001/page' + page_num, {});
+    } catch (error) {
+      throw error;
+    }
+  }
 
-import image from '../images/apple_watch.png';
-
-export function getProductList() {
-  return [
-    {
-      id: 0,
-      name: 'Apple Watch',
-      value: 0,
-      icon_path: image,
-      review_point: 3,
-      review_content: '最高',
-      made_by: 'Apple, Inc',
-    },
-    {
-      id: 1,
-      name: 'Apple Watch',
-      value: 0,
-      icon_path: image,
-      review_point: 3,
-      review_content: '最高',
-      made_by: 'Apple, Inc',
-    },
-    {
-      id: 2,
-      name: 'Apple Watch',
-      value: 0,
-      icon_path: image,
-      review_point: 3,
-      review_content: '最高',
-      made_by: 'Apple, Inc',
-    },
-    {
-      id: 3,
-      name: 'Apple Watch',
-      value: 0,
-      icon_path: image,
-      review_point: 3,
-      review_content: '最高',
-      made_by: 'Apple, Inc',
-    },
-    {
-      id: 4,
-      name: 'Apple Watch',
-      value: 0,
-      icon_path: image,
-      review_point: 3,
-      review_content: '最高',
-      made_by: 'Apple, Inc',
-    },
-  ];
+  public async getProductDetails(id: number) {
+    try {
+      return await axios.get<ProductDetails[]>('http://localhost:3001/' + id, {});
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
-export function getProductDetails() {
-  return {
-    id: 0,
-    name: 'Apple Watch',
-    value: 0,
-    icon_path: image,
-    review_point: 3,
-    review_content: '最高',
-    made_by: 'Apple, Inc',
-  };
-}
+export default new ProductApi();

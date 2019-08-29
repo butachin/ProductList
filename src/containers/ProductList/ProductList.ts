@@ -21,8 +21,8 @@ function mapDispatchToProps(
   dispatch: Dispatch<ProductListAction | ProductDetailsAction>
 ): ProductListDispatchProps {
   return {
-    getProductListRequest: () => {
-      dispatch(ProductListActionCreators.getProductList.request());
+    getProductListRequest: (page_num: number) => {
+      dispatch(ProductListActionCreators.getProductList.request(page_num));
     },
     getProductDetailsRequest: (id: number) => {
       dispatch(ProductDetailsActionCreators.getProductDetails.request(id));
