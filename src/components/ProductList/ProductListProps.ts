@@ -1,6 +1,6 @@
 import { WithStyles } from '@material-ui/core';
 import styles from './ProductListStyles';
-import ProductList from 'src/apis/ProductList/ProductList';
+import ProductList from 'src/apis/models/ProductList';
 import { RouteComponentProps } from 'react-router';
 
 // type ProductListOwnProps = {

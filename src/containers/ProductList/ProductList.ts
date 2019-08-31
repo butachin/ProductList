@@ -11,15 +11,15 @@ import * as ProductListActionCreators from '../../actions/ProductList/ProductLis
 import ProductDetailsAction from '../../actions/ProductDetails/ProductDetailsAction';
 import * as ProductDetailsActionCreators from '../../actions/ProductDetails/ProductDetailsActionCreator';
 
-function mapStateToProps(state: rootState): ProductListConnectedProps {
+const mapStateToProps = (state: rootState): ProductListConnectedProps => {
   return {
     productList: state.productList,
   };
-}
+};
 
-function mapDispatchToProps(
+const mapDispatchToProps = (
   dispatch: Dispatch<ProductListAction | ProductDetailsAction>
-): ProductListDispatchProps {
+): ProductListDispatchProps => {
   return {
     getProductListRequest: (page_num: number) => {
       dispatch(ProductListActionCreators.getProductList.request(page_num));
@@ -28,7 +28,7 @@ function mapDispatchToProps(
       dispatch(ProductDetailsActionCreators.getProductDetails.request(id));
     },
   };
-}
+};
 
 export default connect(
   mapStateToProps,

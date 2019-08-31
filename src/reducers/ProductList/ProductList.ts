@@ -1,4 +1,4 @@
-import ProductList from 'src/apis/ProductList/ProductList';
+import ProductList from 'src/apis/models/ProductList';
 import ProductListAction from 'src/actions/ProductList/ProductListAction';
 import productListActionType from '../../actions/ProductList/ProductListActionType';
 
@@ -9,7 +9,7 @@ export default function productList(
   action: ProductListAction
 ): ProductList[] {
   switch (action.type) {
-    case productListActionType.PRODUCTLIST_SUCCESS:
+    case productListActionType.PRODUCT_LIST_SUCCESS:
       return [...action.payload];
     default:
       return state;

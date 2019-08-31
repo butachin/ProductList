@@ -20,6 +20,6 @@ export function* getProductDetailsData(action: ReturnType<typeof getProductDetai
 }
 
 const ProductDetailsSaga = [
-  takeEvery(ProductDetailsActionType.PRODUCTDETAILS_REQUEST, getProductDetailsData),
+  takeEvery(ProductDetailsActionType.PRODUCT_DETAILS_REQUEST, getProductDetailsData),
 ];
 export default ProductDetailsSaga;

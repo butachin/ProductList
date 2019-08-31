@@ -19,5 +19,5 @@ export function* getProductListData(action: ReturnType<typeof getProductList.req
   }
 }
 
-const ProductListSaga = [takeEvery(productListActionType.PRODUCTLIST_REQUEST, getProductListData)];
+const ProductListSaga = [takeEvery(productListActionType.PRODUCT_LIST_REQUEST, getProductListData)];
 export default ProductListSaga;

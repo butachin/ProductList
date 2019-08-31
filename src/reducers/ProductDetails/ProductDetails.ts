@@ -1,4 +1,4 @@
-import ProductDetails from 'src/apis/ProductDetails/ProductDetails';
+import ProductDetails from 'src/apis/models/ProductDetails';
 import ProductDetailsAction from 'src/actions/ProductDetails/ProductDetailsAction';
 import ProductDetailsActionType from '../../actions/ProductDetails/ProductDetailsActionType';
 
@@ -17,7 +17,7 @@ export default function productDetails(
   action: ProductDetailsAction
 ): ProductDetails {
   switch (action.type) {
-    case ProductDetailsActionType.PRODUCTDETAILS_SUCCESSED:
+    case ProductDetailsActionType.PRODUCT_DETAILS_SUCCESSED:
       return {
         ...state,
         ...action.payload,
