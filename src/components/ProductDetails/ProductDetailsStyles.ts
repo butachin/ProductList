@@ -7,8 +7,9 @@ const styles = (theme: Theme) =>
       flexDirection: 'row',
     },
     image: {
-      width: '50%',
-      height: '100%',
+      marginLeft: 100,
+      marginRight: 100,
+      width: '40%',
     },
     description: {
       textAlign: 'left',
@@ -21,6 +22,22 @@ const styles = (theme: Theme) =>
     },
     reviewPoint: {
       marginTop: 40,
+    },
+    button: {
+      marginTop: 30,
+      backgroundColor: '#F7D358', // 最初に表示されるボタンの色
+      '&:hover': {
+        backgroundColor: '#FFBF00', // カーソルを合わせた時に変わる色
+      },
+    },
+    buttonText: {
+      marginLeft: 20,
+      marginRight: 20,
+    },
+    shoppingIcon: {
+      padding: 3,
+      color: '#ffffff',
+      backgroundColor: '#1C1C1C',
     },
   });
 
