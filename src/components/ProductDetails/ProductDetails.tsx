@@ -4,8 +4,15 @@ import { withStyles } from '@material-ui/styles';
 import styles from './ProductDetailsStyles';
 import { Typography, Button } from '@material-ui/core';
 import ShoppingIcon from '@material-ui/icons/AddShoppingCart';
+import ProductDetailsState from 'src/apis/models/ProductDetails';
 
 class ProductDetails extends React.Component<Props> {
+  public handleCartClick = (body: ProductDetailsState) => (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    this.props.postAddProductRequest(body);
+  };
+
   render() {
     const { classes, productDetails } = this.props;
     return (
@@ -27,7 +34,7 @@ class ProductDetails extends React.Component<Props> {
             >{`評価：${productDetails.review_point}`}</Typography>
             <Typography variant='subtitle1'>{`コメント：${productDetails.review_content}`}</Typography>
           </div>
-          <Button className={classes.button}>
+          <Button className={classes.button} onClick={this.handleCartClick(productDetails)}>
             <ShoppingIcon className={classes.shoppingIcon} />
             <Typography className={classes.buttonText}>カートに入れる</Typography>
           </Button>

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import ProductList from './ProductList/ProductList';
-import ProductDetails from './ProductDetails/ProductDetails';
+import ProductList from './models/ProductList';
+import ProductDetails from './models/ProductDetails';
 
 class ProductApi {
   public async getProductList(page_num: number) {
@@ -14,6 +14,14 @@ class ProductApi {
   public async getProductDetails(id: number) {
     try {
       return await axios.get<ProductDetails>('http://localhost:3001/' + id, {});
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  public async postAddProduct(body: ProductDetails) {
+    try {
+      return await axios.post<ProductDetails>('http://localhost:3001/cart/product/' + body.id, {});
     } catch (error) {
       throw error;
     }
