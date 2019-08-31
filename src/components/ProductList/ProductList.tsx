@@ -12,10 +12,16 @@ import {
   TextField,
 } from '@material-ui/core';
 import { withRouter } from 'react-router';
+import Button from '@material-ui/core/Button';
+import ProductListState from './ProductListState';
 
-class ProductList extends React.Component<ProductListProps> {
+class ProductList extends React.Component<ProductListProps, ProductListState> {
+  readonly state = {
+    page: 1,
+  };
+
   public componentDidMount() {
-    this.props.getProductListRequest(1);
+    this.props.getProductListRequest(this.state.page);
   }
 
   public handleClick = (url: string, id: number) => (
@@ -23,6 +29,18 @@ class ProductList extends React.Component<ProductListProps> {
   ) => {
     this.props.history.push(url);
     this.props.getProductDetailsRequest(id);
+  };
+
+  public handlePageChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    this.setState({ page: Number(event.target.value) });
+  };
+
+  public handlePageButtonClick = (page_num: number) => (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    this.props.getProductListRequest(this.state.page);
   };
 
   render() {
@@ -33,13 +51,23 @@ class ProductList extends React.Component<ProductListProps> {
         <Typography variant='h3' gutterBottom className={classes.title}>
           商品リスト
         </Typography>
-        <TextField
-          id='standard-page-input'
-          label='Page'
-          className={classes.textField}
-          type='number'
-          margin='normal'
-        />
+        <div className={classes.pageContainer}>
+          <TextField
+            value={this.state.page}
+            className={classes.textField}
+            type='number'
+            margin='normal'
+            onChange={this.handlePageChange}
+          />
+          <Button
+            variant='contained'
+            color='primary'
+            className={classes.button}
+            onClick={this.handlePageButtonClick(this.state.page)}
+          >
+            ページを移動する
+          </Button>
+        </div>
         <div className={classes.root}>
           <GridList cellHeight={420} className={classes.gridList}>
             {productList.map((product, index) => (

@@ -6,4 +6,4 @@ export const getProductDetails = createAsyncAction(
   ProductDetailsActionType.PRODUCTDETAILS_REQUEST,
   ProductDetailsActionType.PRODUCTDETAILS_SUCCESSED,
   ProductDetailsActionType.PRODUCTDETAILS_FAILED
-)<number, ProductDetails[], undefined>();
+)<number, ProductDetails, undefined>();

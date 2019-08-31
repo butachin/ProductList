@@ -13,7 +13,7 @@ class ProductApi {
 
   public async getProductDetails(id: number) {
     try {
-      return await axios.get<ProductDetails[]>('http://localhost:3001/' + id, {});
+      return await axios.get<ProductDetails>('http://localhost:3001/' + id, {});
     } catch (error) {
       throw error;
     }

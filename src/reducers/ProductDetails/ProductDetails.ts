@@ -12,15 +12,11 @@ const initialState: ProductDetails = {
   made_by: '',
 };
 
-export default function productList(
+export default function productDetails(
   state: ProductDetails = initialState,
   action: ProductDetailsAction
 ): ProductDetails {
   switch (action.type) {
-    case ProductDetailsActionType.PRODUCTDETAILS_REQUEST:
-      return {
-        ...state,
-      };
     case ProductDetailsActionType.PRODUCTDETAILS_SUCCESSED:
       return {
         ...state,

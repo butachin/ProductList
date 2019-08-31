@@ -28,6 +28,15 @@ const styles = (theme: Theme) =>
     textField: {
       width: 200,
     },
+    pageContainer: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    button: {
+      height: 40,
+    },
   });
 
 export default styles;
