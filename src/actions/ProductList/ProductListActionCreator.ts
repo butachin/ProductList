@@ -6,4 +6,4 @@ export const getProductList = createAsyncAction(
   ProductListActionType.PRODUCT_LIST_REQUEST,
   ProductListActionType.PRODUCT_LIST_SUCCESS,
   ProductListActionType.PRODUCT_LIST_FAILED
-)<number, ProductList[], undefined>();
+)<number, ProductList, undefined>();

@@ -3,12 +3,8 @@ import styles from './ProductListStyles';
 import ProductList from 'src/apis/models/ProductList';
 import { RouteComponentProps } from 'react-router';
 
-// type ProductListOwnProps = {
-//   handleClick: (id: number) => (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
-// };
-
 export type ProductListConnectedProps = {
-  productList: ProductList[];
+  productList: ProductList;
 };
 
 export type ProductListDispatchProps = {
