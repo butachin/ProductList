@@ -39,6 +39,17 @@ const styles = (theme: Theme) =>
       color: '#ffffff',
       backgroundColor: '#1C1C1C',
     },
+    cartButton: {
+      border: 'solid', // 左:丸み 真ん中:線の太さ 右:線の色
+      borderRadius: '50%',
+    },
+    cartButtonContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      position: 'absolute',
+      top: '5%',
+      right: '5%',
+    },
   });
 
 export default styles;

@@ -10,10 +10,12 @@ import {
   CardMedia,
   CardContent,
   TextField,
+  IconButton,
 } from '@material-ui/core';
 import { withRouter } from 'react-router';
 import Button from '@material-ui/core/Button';
 import ProductListState from './ProductListState';
+import CartIcon from '@material-ui/icons/ShoppingCartOutlined';
 
 class ProductList extends React.Component<ProductListProps, ProductListState> {
   readonly state = {
@@ -24,11 +26,17 @@ class ProductList extends React.Component<ProductListProps, ProductListState> {
     this.props.getProductListRequest(this.state.page);
   }
 
-  public handleClick = (url: string, id: number) => (
+  public handleClick = (route: string, id: number) => (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    this.props.history.push(url);
+    this.props.history.push(route);
     this.props.getProductDetailsRequest(id);
+  };
+
+  public handleCartButtonClick = (route: string) => (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    this.props.history.push(route);
   };
 
   public handlePageChange = (
@@ -40,7 +48,7 @@ class ProductList extends React.Component<ProductListProps, ProductListState> {
   public handlePageButtonClick = (page_num: number) => (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    this.props.getProductListRequest(this.state.page);
+    this.props.getProductListRequest(page_num);
   };
 
   render() {
@@ -48,9 +56,15 @@ class ProductList extends React.Component<ProductListProps, ProductListState> {
 
     return (
       <div>
-        <Typography variant='h3' gutterBottom className={classes.title}>
+        <Typography variant='h4' gutterBottom className={classes.title}>
           商品リスト
         </Typography>
+        <div className={classes.cartButtonContainer}>
+          <IconButton className={classes.cartButton} onClick={this.handleCartButtonClick('/cart')}>
+            <CartIcon />
+          </IconButton>
+          <Typography variant='caption'>カート</Typography>
+        </div>
         <div className={classes.pageContainer}>
           <TextField
             value={this.state.page}

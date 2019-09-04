@@ -2,9 +2,10 @@ import React from 'react';
 import Props from './ProductDetailsProps';
 import { withStyles } from '@material-ui/styles';
 import styles from './ProductDetailsStyles';
-import { Typography, Button } from '@material-ui/core';
+import { Typography, Button, IconButton } from '@material-ui/core';
 import ShoppingIcon from '@material-ui/icons/AddShoppingCart';
 import ProductDetailsState from 'src/apis/models/ProductDetails';
+import CartIcon from '@material-ui/icons/ShoppingCartOutlined';
 
 class ProductDetails extends React.Component<Props> {
   public handleCartClick = (body: ProductDetailsState) => (
@@ -13,10 +14,22 @@ class ProductDetails extends React.Component<Props> {
     this.props.postAddProductRequest(body);
   };
 
+  public handleCartButtonClick = (route: string) => (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    this.props.history.push(route);
+  };
+
   render() {
     const { classes, productDetails } = this.props;
     return (
       <div className={classes.container}>
+        <div className={classes.cartButtonContainer}>
+          <IconButton className={classes.cartButton} onClick={this.handleCartButtonClick('/cart')}>
+            <CartIcon />
+          </IconButton>
+          <Typography variant='caption'>カート</Typography>
+        </div>
         <img className={classes.image} alt='complex' src={productDetails.icon_path} />
         <div className={classes.description}>
           <div>
@@ -27,7 +40,7 @@ class ProductDetails extends React.Component<Props> {
             <Typography
               className={classes.value}
               variant='h4'
-            >{`¥ ${productDetails.value}`}</Typography>
+            >{`¥ ${productDetails.value.toLocaleString()}`}</Typography>
             <Typography
               className={classes.reviewPoint}
               variant='subtitle1'
