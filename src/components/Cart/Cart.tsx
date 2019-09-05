@@ -39,12 +39,19 @@ class Cart extends React.Component<Props, State> {
     this.setState({ open: false });
   };
 
-  public handleBuyButton = (ids: number[]) => (
+  public handleBuyButtonClick = (ids: number[]) => (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     ids.map(id => this.props.deleteCartProductsRequest(id));
     this.props.getCartProductsRequest();
     this.setState({ open: false });
+  };
+
+  public handleDeleteButtonClick = (id: number) => (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    this.props.deleteCartProductsRequest(id);
+    this.props.getCartProductsRequest();
   };
 
   render() {
@@ -56,7 +63,7 @@ class Cart extends React.Component<Props, State> {
         <Typography variant='h4' gutterBottom className={classes.title}>
           ショッピングカート
         </Typography>
-        <Button className={classes.button} onClick={this.handleOpen}>
+        <Button className={classes.buyButton} onClick={this.handleOpen}>
           <Typography className={classes.buttonText}>購入する</Typography>
         </Button>
         <Dialog
@@ -69,7 +76,7 @@ class Cart extends React.Component<Props, State> {
             <Button onClick={this.handleClose} color='primary'>
               キャンセル
             </Button>
-            <Button onClick={this.handleBuyButton(ids)} color='primary' autoFocus>
+            <Button onClick={this.handleBuyButtonClick(ids)} color='primary' autoFocus>
               購入する
             </Button>
           </DialogActions>
@@ -83,14 +90,22 @@ class Cart extends React.Component<Props, State> {
                 <ListItemAvatar>
                   <Avatar src={cart.icon_path} className={classes.avater} />
                 </ListItemAvatar>
-                <ListItemText className={classes.text}>
-                  <Typography variant='h4'>{cart.name}</Typography>
-                  <Typography
-                    variant='h5'
-                    className={classes.value}
-                  >{`¥　${cart.value.toLocaleString()}`}</Typography>
-                  <Typography color='textSecondary'>{cart.made_by}</Typography>
-                </ListItemText>
+                <div className={classes.container}>
+                  <ListItemText>
+                    <Typography variant='h4'>{cart.name}</Typography>
+                    <Typography
+                      variant='h5'
+                      className={classes.value}
+                    >{`¥　${cart.value.toLocaleString()}`}</Typography>
+                    <Typography color='textSecondary'>{cart.made_by}</Typography>
+                  </ListItemText>
+                  <Button
+                    className={classes.deleteButton}
+                    onClick={this.handleDeleteButtonClick(cart.id)}
+                  >
+                    削除
+                  </Button>
+                </div>
               </ListItem>
               <Divider />
             </div>

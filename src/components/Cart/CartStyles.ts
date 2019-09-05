@@ -19,10 +19,10 @@ const styles = (theme: Theme) =>
       right: '5%',
       color: '#DA0909',
     },
-    text: {
+    container: {
       marginLeft: 40,
     },
-    button: {
+    buyButton: {
       marginTop: 30,
       backgroundColor: '#F7D358', // 最初に表示されるボタンの色
       '&:hover': {
@@ -38,6 +38,12 @@ const styles = (theme: Theme) =>
     },
     ids: {
       display: 'none',
+    },
+    deleteButton: {
+      backgroundColor: '#F7D358', // 最初に表示されるボタンの色
+      '&:hover': {
+        backgroundColor: '#FFBF00', // カーソルを合わせた時に変わる色
+      },
     },
   });
 
