@@ -22,6 +22,11 @@ export default function productDetails(
         ...state,
         ...action.payload,
       };
+
+    case ProductDetailsActionType.POST_ADD_PRODUCT_SUCCESSED:
+      return {
+        ...state,
+      };
     default:
       return state;
   }

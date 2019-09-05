@@ -8,6 +8,7 @@ export type CartConnectedProps = {
 
 export type CartDispatchToProps = {
   getCartProductsRequest: () => void;
+  deleteCartProductsRequest: (id: number) => void;
 };
 
 type CartProps = WithStyles<typeof styles> & CartDispatchToProps & CartConnectedProps;

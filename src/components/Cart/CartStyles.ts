@@ -22,6 +22,23 @@ const styles = (theme: Theme) =>
     text: {
       marginLeft: 40,
     },
+    button: {
+      marginTop: 30,
+      backgroundColor: '#F7D358', // 最初に表示されるボタンの色
+      '&:hover': {
+        backgroundColor: '#FFBF00', // カーソルを合わせた時に変わる色
+      },
+      position: 'absolute',
+      top: '0%',
+      right: '5%',
+    },
+    buttonText: {
+      marginLeft: 20,
+      marginRight: 20,
+    },
+    ids: {
+      display: 'none',
+    },
   });
 
 export default styles;

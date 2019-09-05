@@ -11,6 +11,9 @@ export default function cartProducts(
   switch (action.type) {
     case CartActionType.CART_SUCCESSED:
       return [...action.payload];
+
+    case CartActionType.DELETE_CART_PRODUCTS_SUCCESSED:
+      return []; // カートの中身を空にする
     default:
       return state;
   }
