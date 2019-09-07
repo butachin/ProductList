@@ -10,7 +10,7 @@ export function* postAddProductData(action: ReturnType<typeof postAddProduct.req
     action.payload
   );
 
-  if (response.status === 200 && response.data) {
+  if (response.status === 201 && response.data) {
     yield put(postAddProduct.success(response.data));
   } else if (response.status === 400) {
     yield put(postAddProduct.failure());

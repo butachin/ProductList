@@ -16,6 +16,7 @@ import {
 } from '@material-ui/core';
 import Props from './CartProps';
 import State from './CartState';
+import Product from 'src/apis/models/Product';
 
 class Cart extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -39,9 +40,10 @@ class Cart extends React.Component<Props, State> {
     this.setState({ open: false });
   };
 
-  public handleBuyButtonClick = (ids: number[]) => (
+  public handleBuyButtonClick = (ids: number[], products: Product[]) => (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
+    this.props.postPeymentsRequest(products);
     ids.map(id => this.props.deleteCartProductsRequest(id));
     this.props.getCartProductsRequest();
     this.setState({ open: false });
@@ -76,7 +78,11 @@ class Cart extends React.Component<Props, State> {
             <Button onClick={this.handleClose} color='primary'>
               キャンセル
             </Button>
-            <Button onClick={this.handleBuyButtonClick(ids)} color='primary' autoFocus>
+            <Button
+              onClick={this.handleBuyButtonClick(ids, cartProducts)}
+              color='primary'
+              autoFocus
+            >
               購入する
             </Button>
           </DialogActions>

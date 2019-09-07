@@ -185,5 +185,6 @@
       "made_by": "Apple, Inc"
     }
   ],
-  "cart": []
+  "cart": [],
+  "payments": {}
 }

@@ -40,6 +40,14 @@ class ProductApi {
     }
   }
 
+  public async postPayments(products: Product[]) {
+    try {
+      return await axios.post<Product[]>('http://localhost:3001/payments', products);
+    } catch (error) {
+      throw error;
+    }
+  }
+
   public async deleteCartProducts(id: number) {
     // カートの商品をDELETEする
     try {
