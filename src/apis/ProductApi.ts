@@ -31,6 +31,15 @@ class ProductApi {
     }
   }
 
+  public async getPurchasedProducts() {
+    // 購入済みの商品をGETする
+    try {
+      return await axios.get<Product[]>('http://localhost:3001/payments', {});
+    } catch (error) {
+      throw error;
+    }
+  }
+
   public async postAddProduct(body: ProductDetails) {
     // カートに商品をPOSTする
     try {
@@ -41,6 +50,7 @@ class ProductApi {
   }
 
   public async postPayments(products: Product[]) {
+    // 購入した商品をPOSTする
     try {
       return await axios.post<Product[]>('http://localhost:3001/payments', products);
     } catch (error) {
@@ -51,7 +61,7 @@ class ProductApi {
   public async deleteCartProducts(id: number) {
     // カートの商品をDELETEする
     try {
-      return await axios.delete<Product[]>('http://localhost:3001/cart/' + id, {});
+      return await axios.delete<Product>('http://localhost:3001/cart/' + id, {});
     } catch (error) {
       throw error;
     }

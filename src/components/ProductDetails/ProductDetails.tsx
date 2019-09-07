@@ -6,6 +6,7 @@ import { Typography, Button, IconButton } from '@material-ui/core';
 import ShoppingIcon from '@material-ui/icons/AddShoppingCart';
 import ProductDetailsState from 'src/apis/models/ProductDetails';
 import CartIcon from '@material-ui/icons/ShoppingCartOutlined';
+import AssignmentIcon from '@material-ui/icons/AssignmentOutlined';
 
 class ProductDetails extends React.Component<Props> {
   public handleCartClick = (body: ProductDetailsState) => (
@@ -24,8 +25,20 @@ class ProductDetails extends React.Component<Props> {
     const { classes, productDetails } = this.props;
     return (
       <div className={classes.container}>
+        <div className={classes.purchasedButtonContainer}>
+          <IconButton
+            className={classes.circleButton}
+            onClick={this.handleCartButtonClick('/purchasedProducts')}
+          >
+            <AssignmentIcon />
+          </IconButton>
+          <Typography variant='caption'>注文履歴</Typography>
+        </div>
         <div className={classes.cartButtonContainer}>
-          <IconButton className={classes.cartButton} onClick={this.handleCartButtonClick('/cart')}>
+          <IconButton
+            className={classes.circleButton}
+            onClick={this.handleCartButtonClick('/cart')}
+          >
             <CartIcon />
           </IconButton>
           <Typography variant='caption'>カート</Typography>

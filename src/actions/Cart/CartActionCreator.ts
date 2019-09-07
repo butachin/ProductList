@@ -25,4 +25,4 @@ export const deleteCartProducts = createAsyncAction(
   CartActionType.DELETE_CART_PRODUCTS_REQUEST,
   CartActionType.DELETE_CART_PRODUCTS_SUCCESSED,
   CartActionType.DELETE_CART_PRODUCTS_FAILED
-)<number, Product[], undefined>();
+)<number, Product, undefined>();

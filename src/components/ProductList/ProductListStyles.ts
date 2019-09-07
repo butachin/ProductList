@@ -37,7 +37,7 @@ const styles = (theme: Theme) =>
     button: {
       height: 40,
     },
-    cartButton: {
+    circleButton: {
       border: 'solid', // 左:丸み 真ん中:線の太さ 右:線の色
       borderRadius: '50%',
     },
@@ -47,6 +47,13 @@ const styles = (theme: Theme) =>
       position: 'absolute',
       top: '5%',
       right: '5%',
+    },
+    purchasedButtonContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      position: 'absolute',
+      top: '5%',
+      right: '10%',
     },
   });
 

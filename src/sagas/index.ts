@@ -5,6 +5,7 @@ import AddProductSaga from './Cart/AddProduct';
 import CartProductsSaga from './Cart/CartProductsSaga';
 import DeleteCartProductsSaga from './Cart/DeleteCartProductsSaga';
 import PostPaymentsSaga from './Cart/PostPaymentsSaga';
+import GetPurchasedProductsSaga from './PurchasedProducts/GetPurchasedProducts';
 
 export default function* rootSaga() {
   yield all([
@@ -14,5 +15,6 @@ export default function* rootSaga() {
     ...PostPaymentsSaga,
     ...CartProductsSaga,
     ...DeleteCartProductsSaga,
+    ...GetPurchasedProductsSaga,
   ]);
 }

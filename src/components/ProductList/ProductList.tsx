@@ -12,10 +12,10 @@ import {
   TextField,
   IconButton,
 } from '@material-ui/core';
-import { withRouter } from 'react-router';
 import Button from '@material-ui/core/Button';
 import ProductListState from './ProductListState';
 import CartIcon from '@material-ui/icons/ShoppingCartOutlined';
+import AssignmentIcon from '@material-ui/icons/AssignmentOutlined';
 
 class ProductList extends React.Component<ProductListProps, ProductListState> {
   readonly state = {
@@ -59,8 +59,20 @@ class ProductList extends React.Component<ProductListProps, ProductListState> {
         <Typography variant='h4' gutterBottom className={classes.title}>
           商品リスト
         </Typography>
+        <div className={classes.purchasedButtonContainer}>
+          <IconButton
+            className={classes.circleButton}
+            onClick={this.handleCartButtonClick('/purchasedProducts')}
+          >
+            <AssignmentIcon />
+          </IconButton>
+          <Typography variant='caption'>注文履歴</Typography>
+        </div>
         <div className={classes.cartButtonContainer}>
-          <IconButton className={classes.cartButton} onClick={this.handleCartButtonClick('/cart')}>
+          <IconButton
+            className={classes.circleButton}
+            onClick={this.handleCartButtonClick('/cart')}
+          >
             <CartIcon />
           </IconButton>
           <Typography variant='caption'>カート</Typography>
@@ -110,4 +122,4 @@ class ProductList extends React.Component<ProductListProps, ProductListState> {
   }
 }
 
-export default withRouter(withStyles(styles)(ProductList));
+export default withStyles(styles)(ProductList);
