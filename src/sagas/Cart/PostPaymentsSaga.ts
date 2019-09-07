@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import api from '../../apis/ProductApi';
 import { PromiseGenericType } from 'src/utils/types/TypeUtils';
 import { postPayments } from 'src/actions/Cart/CartActionCreator';
@@ -16,5 +16,5 @@ export function* postPaymentsData(action: ReturnType<typeof postPayments.request
     yield put(postPayments.failure());
   }
 }
-const PostPaymentsSaga = [takeEvery(CartActionType.POST_PAYMENTS_REQUEST, postPaymentsData)];
+const PostPaymentsSaga = [takeLatest(CartActionType.POST_PAYMENTS_REQUEST, postPaymentsData)];
 export default PostPaymentsSaga;

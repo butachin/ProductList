@@ -6,9 +6,9 @@ import {
 import { connect } from 'react-redux';
 import ProductDetails from 'src/components/ProductDetails/ProductDetails';
 import { Dispatch } from 'redux';
-import ProductDetailsAction from 'src/actions/ProductDetails/ProductDetailsAction';
-import { postAddProduct } from 'src/actions/ProductDetails/ProductDetailsActionCreator';
+import { postAddProduct } from 'src/actions/Cart/CartActionCreator';
 import ProductDetailsState from 'src/apis/models/ProductDetails';
+import CartAction from 'src/actions/Cart/CartAction';
 
 const mapStateToProps = (state: rootState): ProductDetailsConnectedProps => {
   return {
@@ -16,9 +16,7 @@ const mapStateToProps = (state: rootState): ProductDetailsConnectedProps => {
   };
 };
 
-const mapDispatchToProps = (
-  dispatch: Dispatch<ProductDetailsAction>
-): ProductDetailsDispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<CartAction>): ProductDetailsDispatchProps => ({
   postAddProductRequest: (body: ProductDetailsState) => {
     dispatch(postAddProduct.request(body));
   },

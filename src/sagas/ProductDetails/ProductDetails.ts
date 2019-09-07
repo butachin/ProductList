@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import api from '../../apis/ProductApi';
 import { getProductDetails } from '../../actions/ProductDetails/ProductDetailsActionCreator';
 import ProductDetailsActionType from '../../actions/ProductDetails/ProductDetailsActionType';
@@ -20,6 +20,6 @@ export function* getProductDetailsData(action: ReturnType<typeof getProductDetai
 }
 
 const ProductDetailsSaga = [
-  takeEvery(ProductDetailsActionType.PRODUCT_DETAILS_REQUEST, getProductDetailsData),
+  takeLatest(ProductDetailsActionType.PRODUCT_DETAILS_REQUEST, getProductDetailsData),
 ];
 export default ProductDetailsSaga;

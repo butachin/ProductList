@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import api from '../../apis/ProductApi';
 import { deleteCartProducts } from '../../actions/Cart/CartActionCreator';
 import CartActionType from '../../actions/Cart/CartActionType';
@@ -20,6 +20,6 @@ export function* deleteCartProductsData(action: ReturnType<typeof deleteCartProd
 }
 
 const DeleteCartProductsSaga = [
-  takeEvery(CartActionType.DELETE_CART_PRODUCTS_REQUEST, deleteCartProductsData),
+  takeLatest(CartActionType.DELETE_CART_PRODUCTS_REQUEST, deleteCartProductsData),
 ];
 export default DeleteCartProductsSaga;

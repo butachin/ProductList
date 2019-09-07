@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import api from '../../apis/ProductApi';
 import { getProductList } from '../../actions/ProductList/ProductListActionCreator';
 import productListActionType from '../../actions/ProductList/ProductListActionType';
@@ -19,5 +19,7 @@ export function* getProductListData(action: ReturnType<typeof getProductList.req
   }
 }
 
-const ProductListSaga = [takeEvery(productListActionType.PRODUCT_LIST_REQUEST, getProductListData)];
+const ProductListSaga = [
+  takeLatest(productListActionType.PRODUCT_LIST_REQUEST, getProductListData),
+];
 export default ProductListSaga;

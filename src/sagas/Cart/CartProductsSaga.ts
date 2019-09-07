@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import api from '../../apis/ProductApi';
 import { getCartProducts } from '../../actions/Cart/CartActionCreator';
 import CartActionType from '../../actions/Cart/CartActionType';
@@ -18,5 +18,5 @@ export function* getCartProductsData(action: ReturnType<typeof getCartProducts.r
   }
 }
 
-const CartProductsSaga = [takeEvery(CartActionType.CART_REQUEST, getCartProductsData)];
+const CartProductsSaga = [takeLatest(CartActionType.CART_REQUEST, getCartProductsData)];
 export default CartProductsSaga;
